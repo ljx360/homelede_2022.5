@@ -74,10 +74,12 @@ jobs:
       run: |
         #[ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         
-        echo -e "ljx,run $DIY_SH"
+        echo -e "ljx,$DIY_SH"
         cd $GITHUB_WORKSPACE/openwrt
-        chmod +x $DIY_SH
-        $DIY_SH
+        echo -e "ljx,chmod"
+        chmod +x $GITHUB_WORKSPACE/openwrt/$DIY_SH
+        echo -e "ljx,run $DIY_SH"
+        $GITHUB_WORKSPACE/openwrt/$DIY_SH
 
 
 
