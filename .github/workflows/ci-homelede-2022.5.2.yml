@@ -56,6 +56,7 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+        
     - name: Clone source code
       run: |
         df -hT $PWD
@@ -71,7 +72,7 @@ jobs:
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         
-        cd openwrt
+        cd $GITHUB_WORKSPACE/openwrt
         chmod +x $DIY_SH
         sh $DIY_SH
 
